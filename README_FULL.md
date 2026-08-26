@@ -4,7 +4,7 @@
 
 A modern data warehouse built using **SQL Server** to integrate data from multiple source systems, clean and transform raw data, implement automated ETL pipelines, and create a structured analytical data model. The project provides a centralized and reliable foundation for data analysis and reporting.
 
----
+
 
 ## 2. Project Overview
 
@@ -20,7 +20,7 @@ This project focuses on building a centralized data warehouse using SQL Server t
 * Created **fact and dimension tables** using a dimensional data model
 * Prepared the warehouse for SQL-based analytical and reporting workloads
 
----
+
 
 ## 3. Business Problem
 
@@ -34,7 +34,7 @@ To address these challenges, this project implements a **Data Warehouse as a cen
 
 This centralized approach provides a consistent and organized foundation for downstream analysis and reporting, while supporting historical data and reducing the reliance on repetitive manual data preparation.
 
----
+
 
 ## 4. Project Objectives
 
@@ -48,7 +48,7 @@ The main objectives of this project are:
 6. Validate data quality and integrity.
 7. Enable SQL-based business analysis.
 
----
+
 
 ## 5. Technology Stack
 
@@ -62,15 +62,15 @@ The main objectives of this project are:
 | Documentation   | **Markdown / Draw.io** **/ ChatGPT**              |
 | Version Control | **Git / GitHub**                                  |
 
----
+
 
 ## 6. Data Architecture
 
 It is a **Medallion Architecture** consisting of three layers: **Bronze, Silver, and Gold**.
 
-<!-- Replace with your Data Architecture image -->
-
-![Data Architecture](docs/images/data_architecture.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nambhidharan18/Data_Warehouse_Project_using_Sql/main/docs/image/Data%20Architecture.png" alt="Data Architecture">
+</p>
 
 ### Bronze Layer
 
@@ -84,17 +84,13 @@ The Silver layer contains cleaned and transformed data. Data quality issues are 
 
 The Gold layer contains the final, business-ready data model. It consists of fact and dimension tables designed for analytical queries and reporting.
 
----
+
 
 ## 7. Data Flow and Integration
 
 ### Data Sources
 
 The project integrates data from two source systems: **CRM (Customer Relationship Management)** and **ERP (Enterprise Resource Planning)** systems.
-
-<!-- Replace with your Data Sources image -->
-
-![Data Sources](docs/images/data_sources.png)
 
 #### CRM System
 
@@ -114,27 +110,21 @@ The ERP system provides additional customer, location, and product information t
 
 ### Data Flow
 
-<!-- Replace with your Data Flow image -->
-
-![Data Flow](docs/images/data_flow.png)
-
 Data flows from the **CRM and ERP source systems** through the three warehouse layers:
 
-```text
-CRM + ERP Sources
-       ↓
-   Bronze Layer
-       ↓
-   Silver Layer
-       ↓
-    Gold Layer
-```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nambhidharan18/Data_Warehouse_Project_using_Sql/main/docs/image/Data%20Flow.gif" alt="Data Flow">
+</p>
 
 The Bronze layer stores the extracted source data, the Silver layer performs cleansing and integration, and the Gold layer contains the final analytical model.
 
 ### Data Integration
 
 The CRM and ERP systems contain complementary information that must be integrated to create a complete view of customers and products.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nambhidharan18/Data_Warehouse_Project_using_Sql/main/docs/image/Data%20Integration.png" alt="Data Integration">
+</p>
 
 The `crm_sales_details` file contains `prd_id` and `cst_id`, which are used to connect sales transactions with the corresponding product and customer information.
 
@@ -146,15 +136,14 @@ The `crm_sales_details` file contains `prd_id` and `cst_id`, which are used to c
 
 Through these relationships, additional ERP information such as **customer birthdate, country, product category, and product subcategory** is integrated with the CRM sales, customer, and product data.
 
----
+
 
 ## 8. ETL Process
-
-<!-- Replace with your ETL Process image -->
-
-![ETL Process](docs/images/etl_process.png)
-
 The ETL pipeline extracts data from the source CSV files, processes it through the Bronze and Silver layers, and loads the transformed data into the Gold layer.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nambhidharan18/Data_Warehouse_Project_using_Sql/main/docs/image/ETL.gif" alt="ETL">
+</p>
 
 The main characteristics of the ETL process are:
 
@@ -170,7 +159,7 @@ The main characteristics of the ETL process are:
 
 The complete ETL implementation, including extraction, transformation, validation, and loading details, is documented separately.
 
-**[Read More → ETL Process Documentation](docs/etl_process.md)**
+**[Read More → ETL Process Documentation](docs/ETL.md)**
 
 ---
 
@@ -178,9 +167,9 @@ The complete ETL implementation, including extraction, transformation, validatio
 
 The Gold layer uses a **Star Schema** to organize the analytical data.
 
-<!-- Replace with your Data Modeling image -->
-
-![Data Model](docs/images/data_model.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nambhidharan18/Data_Warehouse_Project_using_Sql/main/docs/image/Data%20Model.png" alt="Data Model">
+</p>
 
 The model consists of one central fact table and two dimension tables:
 
@@ -218,7 +207,7 @@ The remaining columns in `fact_sales` describe the sales transaction:
 
 This structure separates **transactional measures** from **descriptive attributes**, making the Gold layer suitable for analytical queries and reporting.
 
----
+
 
 ## 10. Fact Table Grain
 
@@ -228,7 +217,7 @@ The **grain** defines exactly what one row in the fact table represents.
 
 Defining the grain before designing the fact table ensures that the measures and dimensions are stored at the correct level of detail and prevents ambiguity when performing aggregations and analysis.
 
----
+
 
 ## 11. Data Catalog
 
@@ -254,7 +243,7 @@ The complete data catalog, including detailed information about the remaining ta
 
 **[Read More → Full Data Catalog](docs/data_catalog.md)**
 
----
+
 
 ## 12. Data Quality
 
@@ -286,7 +275,7 @@ The complete data quality test scripts can be found in the **`tests/`** folder.
 
 **[View Data Quality Tests →](tests/)**
 
----
+
 
 ## 13. Project Structure
 
@@ -314,7 +303,7 @@ data-warehouse-project/
 ├── README.md                           # Project overview
 ```
 
----
+
 
 ## 14. Limitations
 
@@ -330,7 +319,7 @@ Although this project demonstrates the core concepts of building a data warehous
 
 These limitations provide opportunities to extend the project toward a more production-oriented data warehouse solution.
 
----
+
 
 ## 15. Future Improvements
 
@@ -346,48 +335,7 @@ The project can be further enhanced with the following improvements:
 * Introduce more source systems and business domains to expand the analytical capabilities of the warehouse.
 * Optimize SQL queries, indexing, and data loading processes for larger datasets.
 
----
 
-## 16. Credits
-
-This project was developed as a hands-on learning project based on the **SQL Data Warehouse & Analytics Project** tutorial by **Baraa Khatib Salkini**.
-
-The tutorial provided valuable guidance on data warehouse architecture, ETL processes, data integration, dimensional modeling, data quality, and SQL-based analytics.
-
-**Tutorial Creator:** [Baraa Khatib Salkini](https://www.linkedin.com/in/baraa-khatib-salkini/)
-
-**Note:** The implementation and documentation in this repository are presented as my own learning work, with the tutorial serving as the primary source of guidance and project inspiration.
-## 14. Limitations
-
-Although this project demonstrates the core concepts of building a data warehouse and implementing an ETL pipeline, it has several limitations compared with a production-level enterprise data warehouse:
-
-* **Static source data:** The project uses CSV files as source systems rather than live CRM and ERP databases.
-* **Full refresh loading:** The ETL process uses a full extraction and full load approach, which may not be efficient for very large datasets.
-* **Batch processing:** Data is processed in batches rather than through real-time or near-real-time pipelines.
-* **SCD Type 1:** Dimension changes overwrite existing values, so historical changes to dimension attributes are not preserved.
-* **Manual execution:** The ETL process is not connected to a production scheduler or orchestration platform.
-* **Limited scale:** The project is designed as a portfolio and learning project and has not been optimized for enterprise-scale data volumes.
-* **Limited monitoring:** Production-level monitoring, alerting, and centralized ETL logging have not been implemented.
-
-These limitations provide opportunities to extend the project toward a more production-oriented data warehouse solution.
-
----
-
-## 15. Future Improvements
-
-The project can be further enhanced with the following improvements:
-
-* Implement **incremental data loading** to process only new or modified records instead of performing a full refresh.
-* Introduce **Slowly Changing Dimensions (SCD Type 2)** to preserve historical changes in dimension attributes.
-* Automate and schedule ETL pipelines using an orchestration tool such as **Apache Airflow, Azure Data Factory, or SQL Server Agent**.
-* Implement comprehensive **ETL logging, monitoring, and error handling**.
-* Add automated and continuous **data quality testing**.
-* Connect the Gold layer to **Power BI** or another BI platform for interactive reporting.
-* Deploy the warehouse to a **cloud data platform** for improved scalability and accessibility.
-* Introduce more source systems and business domains to expand the analytical capabilities of the warehouse.
-* Optimize SQL queries, indexing, and data loading processes for larger datasets.
-
----
 
 ## 16. Credits
 
